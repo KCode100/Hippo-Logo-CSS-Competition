@@ -1,7 +1,32 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
 .container {
-    display: grid;
-    place-items: center;
-    height: 100vh;
+    display: flex;
+    align-items: end;
+    height: calc(100vh - 50px);
+    max-width: calc(100vw - 150px);
+    padding: 20px;
+}
+
+.farm-pond {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #624516;
+
+    --size: 5px;
+    --R: calc(var(--size)*1.28);
+    -webkit-mask:
+      radial-gradient(var(--R) at 50% calc(1.8*var(--size)),#000 99%,#0000 101%) 
+        calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
+      radial-gradient(var(--R) at 50% calc(-.8*var(--size)),#0000 99%,#000 101%) 
+        50% var(--size)/calc(4*var(--size)) 100% repeat-x;
+    background: linear-gradient(90deg,#a06e1e, #624516);
+    height: 30px;
 }
 
 .body, .body div {
@@ -13,6 +38,7 @@
     position: relative;
     width: 100px;
     height: 100px;
+    animation: walk 20s ease-in-out infinite;
 }
 
 .body div {
@@ -24,6 +50,7 @@
     height: 50px;
     top: -15px;
     right: -22px;
+    animation: head .8s ease-in-out infinite alternate-reverse;
 }
 
 .mouth {
@@ -31,6 +58,7 @@
     height: 60px;
     top: 0px;
     right: -68px;
+    animation: mouth .8s ease-in-out infinite alternate-reverse;
 }
 
 .ear {
@@ -38,6 +66,7 @@
     height: 10px;
     top: -20px;
     right: 12px;
+    animation: head .8s ease-in-out infinite alternate-reverse;
 }
 
 .leg {
@@ -48,11 +77,13 @@
 .leg--right {
     bottom: -20px;
     right: 0px;
+    animation: rightLeg .8s ease-in-out infinite alternate-reverse;
 }
 
 .leg--left {
     bottom: -20px;
     left: 0px;
+    animation: leftLeg .8s ease-in-out infinite alternate-reverse;
 }
 
 .tail {
@@ -61,4 +92,91 @@
     left: -8px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.parachute {
+    position: absolute;
+    bottom: 80%;
+    left: -100%;
+    animation: parachute 20s ease-in-out infinite;
+}
+
+@keyframes walk {
+    0%, 100% {
+        transform: translateX(0%) translateY(0%) rotate(0deg);
+    }
+    
+    25% {
+        transform: translateX(calc(100vw - 150px));
+    }
+
+    28% {
+        transform: translateX(calc(100vw - 150px)) rotate(-90deg);
+    }
+
+    52% {
+        transform: translateY(calc(-100vh + 50px)) translateX(calc(100vw - 150px)) rotate(-90deg);
+    }
+
+    75% {
+        transform: translateY(-30vh) translateX(10vw) rotate(25deg);
+    }
+
+    90% {
+        transform: translateY(-20vh) translateX(15vw) rotate(-10deg);
+    }
+
+    /* 95% {
+        transform: translateY(-10vh) translateX(10vw) rotate(-20deg);
+    } */
+}
+
+@keyframes parachute {
+    0%, 49% {
+        opacity: 0;
+    }
+    
+    70% {
+        opacity: 1;
+    }
+}
+
+@keyframes rightLeg {
+    from {
+        transform: translateX(0%);
+    }
+    
+    to {
+        transform: translateX(-10%);
+    }
+}
+
+@keyframes leftLeg {
+    from {
+        transform: translateX(0%);
+    }
+    
+    to {
+        transform: translateX(10%);
+    }
+}
+
+@keyframes head {
+    from {
+        transform: translateY(0%) translateX(0%);
+    }
+    
+    to {
+        transform: translateY(8px) translateX(5px);
+    }
+}
+
+@keyframes mouth {
+    from {
+        transform: translateY(0%) translateX(0%);
+    }
+    
+    to {
+        transform: translateY(25%) translateX(5%);
+    }
 }
