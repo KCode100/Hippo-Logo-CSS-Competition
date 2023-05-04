@@ -1,0 +1,64 @@
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.body, .body div {
+    background-color: black;
+    border-radius: 50%;
+}
+
+.body {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.body div {
+    position: absolute;
+}
+
+.head {
+    width: 50px;
+    height: 50px;
+    top: -15px;
+    right: -22px;
+}
+
+.mouth {
+    width: 60px;
+    height: 60px;
+    top: 0px;
+    right: -68px;
+}
+
+.ear {
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    right: 12px;
+}
+
+.leg {
+    width: 50px;
+    height: 50px;
+}
+
+.leg--right {
+    bottom: -20px;
+    right: 0px;
+}
+
+.leg--left {
+    bottom: -20px;
+    left: 0px;
+}
+
+.tail {
+    width: 10px;
+    height: 10px;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
